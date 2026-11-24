@@ -1,0 +1,18 @@
+# Normalise line endings: LF in the repository and in the working tree, so
+# files don't churn between Windows and other machines.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF so cmd.exe accepts them
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary assets are never converted or diffed as text
+*.db binary
+*.sqlite binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pkl binary
+*.h5 binary
+*.pt binary
+*.onnx binary
