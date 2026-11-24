@@ -34,6 +34,12 @@ def design_bandpass_filter(
         "ppg": (0.5, 8),
     }
 
+    # Normalise the name first: the pipeline may pass "ECG" (the spelling used
+    # by BaselineSample.modality and TestResult.test_type) while the lookup keys
+    # are lowercase, so without this the same signal would be rejected simply
+    # because of capitalisation.
+    modality = modality.lower()
+
     if modality not in filters:
         raise ValueError(f"Unsupported signal type: {modality}")
 
